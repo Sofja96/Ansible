@@ -25,7 +25,7 @@ pipeline {
                   //Class.forName("org.postgresql.Driver")
                   def user = 'postgres'
                   def password = 'shark'
-                  def driver = 'org.hsqldb.jdbcDriver'
+                  def driver = 'org.postgresql.jdbcDriver'
                   def sql = Sql.newInstance(url, user, password, driver)
                   //def driver = 'database-network_docker'
                   //def driver = Class.forName('org.postgresql.Driver').newInstance() as Driver
