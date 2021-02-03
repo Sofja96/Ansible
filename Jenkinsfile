@@ -19,7 +19,7 @@ pipeline {
                   def url = 'jdbc:postgresql://localhost:5432:DB:postgres'
                   def user = 'postgres'
                   def password = 'shark'
-                  def driver = 'org.postgresql.Driver'
+                  def driver = 'database-network_docker'
                  def sql = Sql.newInstance(url, user, password, driver)
                  sql.execute'''
     CREATE TABLE Author (
