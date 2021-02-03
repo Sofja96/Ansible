@@ -12,7 +12,7 @@ pipeline {
         stage('Stage 1') {
             steps {
                 sh 'docker ps' 
-                sh 'psql -h 172.28.0.1 -p 5432 -U postgres -c "\du"'
+                sh 'psql -h 172.28.0.1 -p 5432 -U postgres -c '\du''
                 
             }
         }
