@@ -18,17 +18,18 @@ pipeline {
         stage('stage 2') {
           steps {
               script {
-                 // def url = 'jdbc:postgresql://localhost:5432:DB:postgres'
-                 // Class.forName("org.postgresql.Driver")
+                  
                   @Grab('org.hsqldb:hsqldb:2.5.1')
                   @GrabConfig(systemClassLoader=true)
+                  def url = 'jdbc:postgresql://localhost:5432:DB:postgres'
+                  Class.forName("org.postgresql.Driver")
                   def user = 'postgres'
                   def password = 'shark'
                   //def driver = 'database-network_docker'
                   //def driver = Class.forName('org.postgresql.Driver').newInstance() as Driver
-                  //Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432:DB:postgres", "user", "password")
+                  Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432:DB:postgres", "user", "password")
                   //def conn = driver.connect("jdbc:postgresql://localhost:5432", "user", "password")
-                  //def sql = new Sql(conn)
+                  def sql = new Sql(connection)
                  def sql = Sql.newInstance(url, user, password, driver)
                  sql.execute'''
     CREATE TABLE Author (
@@ -38,7 +39,7 @@ pipeline {
   );
 '''
                   sql.close()
-                  //connection.close()                          
+                  connection.close()                          
               }
           }
         }
