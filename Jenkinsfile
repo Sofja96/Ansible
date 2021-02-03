@@ -22,7 +22,7 @@ pipeline {
                  // @Grab('org.hsqldb:hsqldb:2.5.1')
                  // @GrabConfig(systemClassLoader=true)
                   def url = 'jdbc:postgresql://localhost:5432:DB:postgres'
-                  Class.forName("org.postgresql.Driver")
+                  //Class.forName("org.postgresql.Driver")
                   def user = 'postgres'
                   def password = 'shark'
                   //def driver = 'database-network_docker'
