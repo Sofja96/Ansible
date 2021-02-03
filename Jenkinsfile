@@ -20,7 +20,7 @@ pipeline {
                   def user = 'postgres'
                   def password = 'shark'
                   //def driver = 'database-network_docker'
-                  this.connection = `DriverManager.getConnection("jdbc:postgresql://localhost:5432:DB:postgres", "user", "password");`
+                  this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432:DB:postgres", "user", "password")
                  //def sql = Sql.newInstance(url, user, password, driver)
                  connection.execute'''
     CREATE TABLE Author (
