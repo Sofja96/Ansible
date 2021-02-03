@@ -35,8 +35,8 @@ pipeline {
                   //def conn = driver.connect("jdbc:postgresql://localhost:5432", "user", "password")
                   //def sql = new Sql(conn)
                  //def sql = Sql.newInstance(url, user, password, driver)
-                  Class.forName("com.postgresql.jdbc.Driver")
-                  def sql = Sql.newInstance("jdbc:postgresql://localhost:5432:DB:postgres", "user","password", "com.postgresql.jdbc.Driver")
+                  Class.forName("org.postgresql.jdbc.Driver")
+                  def sql = Sql.newInstance("jdbc:postgresql://localhost:5432:DB:postgres", "user","password", "org.postgresql.jdbc.Driver")
                   def rows = sql.execute "select count(*) from test;"
                   echo rows.dump()
                //  sql.execute'''
