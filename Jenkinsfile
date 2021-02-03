@@ -25,11 +25,13 @@ pipeline {
                   //Class.forName("org.postgresql.Driver")
                   def user = 'postgres'
                   def password = 'shark'
+                  def driver = 'org.hsqldb.jdbcDriver'
+                  def sql = Sql.newInstance(url, user, password, driver)
                   //def driver = 'database-network_docker'
-                  def driver = Class.forName('org.postgresql.Driver').newInstance() as Driver
+                  //def driver = Class.forName('org.postgresql.Driver').newInstance() as Driver
                   //this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432:DB:postgres", "user", "password")
-                  def conn = driver.connect("jdbc:postgresql://localhost:5432", "user", "password")
-                  def sql = new Sql(conn)
+                  //def conn = driver.connect("jdbc:postgresql://localhost:5432", "user", "password")
+                  //def sql = new Sql(conn)
                  //def sql = Sql.newInstance(url, user, password, driver)
                  sql.execute'''
     CREATE TABLE Author (
