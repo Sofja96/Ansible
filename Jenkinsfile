@@ -27,7 +27,7 @@ pipeline {
                   def password = 'shark'
                   //def driver = 'database-network_docker'
                   //def driver = Class.forName('org.postgresql.Driver').newInstance() as Driver
-                  Connection.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432:DB:postgres", "user", "password")
+                  this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432:DB:postgres", "user", "password")
                   //def conn = driver.connect("jdbc:postgresql://localhost:5432", "user", "password")
                   //def sql = new Sql(connection)
                  //def sql = Sql.newInstance(url, user, password, driver)
