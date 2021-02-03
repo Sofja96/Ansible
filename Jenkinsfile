@@ -1,7 +1,7 @@
 import groovy.sql.Sql
-import java.sql.Connection
-import java.sql.DriverManager
-import java.sql.*
+//import java.sql.Connection
+//import java.sql.DriverManager
+i//mport java.sql.*
 
 
 //
@@ -19,8 +19,8 @@ pipeline {
           steps {
               script {
                   
-                  @Grab('org.hsqldb:hsqldb:2.5.1')
-                  @GrabConfig(systemClassLoader=true)
+                 // @Grab('org.hsqldb:hsqldb:2.5.1')
+                 // @GrabConfig(systemClassLoader=true)
                   def url = 'jdbc:postgresql://localhost:5432:DB:postgres'
                   Class.forName("org.postgresql.Driver")
                   def user = 'postgres'
