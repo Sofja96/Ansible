@@ -1,4 +1,6 @@
 import groovy.sql.Sql
+import java.sql.Connection
+import java.sql.DriverManager
 import java.sql.*
 //
 pipeline {
@@ -15,12 +17,12 @@ pipeline {
           steps {
               script {
                  // def url = 'jdbc:postgresql://localhost:5432:DB:postgres'
-                  Class.forName("org.postgresql.Driver");
+                  Class.forName("org.postgresql.Driver")
                   def user = 'postgres'
                   def password = 'shark'
                   //def driver = 'database-network_docker'
                   def driver = Class.forName('org.postgresql.Driver').newInstance() as Driver
-                  connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432:DB:postgres", "user", "password")
+                  Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432:DB:postgres", "user", "password")
                   //def conn = driver.connect("jdbc:postgresql://localhost:5432", "user", "password")
                   //def sql = new Sql(conn)
                  //def sql = Sql.newInstance(url, user, password, driver)
