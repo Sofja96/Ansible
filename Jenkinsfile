@@ -11,33 +11,46 @@ pipeline {
     stages {
         stage('Stage 1') {
             steps {
-                SCRIPT_PATH='docker ps' 
-                //sh " psql -h 172.28.0.1 -p 5432 -U postgres -c 'create user test3'"
-                // check exit code
-                sсript {
-         echo 'Running the exit script...'
-        rc = sh(script: "${SCRIPT_PATH}", returnStatus: true)
-
-        sh "echo \"exit code is : ${rc}\""
-
-        if (rc != 0) 
-        { 
-            sh "echo 'exit code is NOT zero'"
-        } 
-        else 
-        {
-            sh "echo 'exit code is zero'"
+                     catchError {
+          sh 'docker ps'
         }
-                }
-               // println ("\$?")
-                //
-                //bash -c  "echo \$?"
-                
-            }
+      }
+      post {
+        success {
+          echo 'Build stage successful'
+        }
+        failure {
+          echo 'Compile stage failed'
+            sh 'docker logs postgreql'
+          //error('Build is aborted due to failure of build stage')
+
+        }
+      }
         }
     }
 }
+               // SCRIPT_PATH = 'docker ps' 
+                //sh " psql -h 172.28.0.1 -p 5432 -U postgres -c 'create user test3'"
+                // check exit code
+               // sсript {
+      //   echo 'Running the exit script...'
+       // rc = sh(script: "${SCRIPT_PATH}", returnStatus: true)
 
+       // sh "echo \"exit code is : ${rc}\""
+
+     //   if (rc != 0) 
+     //   { 
+          //  sh "echo 'exit code is NOT zero'"
+      //  } 
+     //   else 
+     //   {
+           // sh "echo 'exit code is zero'"
+      //  
+                
+               // println ("\$?")
+                //
+                //bash -c  "echo \$?"
+ 
         //stage('stage 2') {
          // steps {
              // script {
