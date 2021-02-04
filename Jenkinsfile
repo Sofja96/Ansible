@@ -12,7 +12,7 @@ pipeline {
         stage('Stage 1') {
             steps {
                 sh 'docker ps' 
-                sh " psql -h 172.28.0.1 -p 5432 -U postgres -c 'create user test3'"
+                //sh " psql -h 172.28.0.1 -p 5432 -U postgres -c 'create user test3'"
                 println ("\$?")
                 //
                 //bash -c  "echo \$?"
