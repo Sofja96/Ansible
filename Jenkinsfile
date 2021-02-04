@@ -22,7 +22,7 @@ pipeline {
         }
         failure {
           echo 'Compile stage failed'
-            sh 'ansible-playbook -i hosts config.yml --ask-become-pass'
+            sh 'ansible-playbook -i hosts config.yml'
           //  sh 'docker logs postgreql'
           //error('Build is aborted due to failure of build stage')
 
