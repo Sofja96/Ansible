@@ -11,10 +11,13 @@ pipeline {
     stages {
         stage('Stage 1') {
             steps {
-                sh 'docker ps' 
+                SCRIPT_PATH='docker ps' 
                 //sh " psql -h 172.28.0.1 -p 5432 -U postgres -c 'create user test3'"
                 // check exit code
-                skript {
+                sсript {
+         echo 'Running the exit script...'
+        rc = sh(script: "${SCRIPT_PATH}", returnStatus: true)
+
         sh "echo \"exit code is : ${rc}\""
 
         if (rc != 0) 
