@@ -14,6 +14,7 @@ pipeline {
                 sh 'docker ps' 
                 //sh " psql -h 172.28.0.1 -p 5432 -U postgres -c 'create user test3'"
                 // check exit code
+                skript {
         sh "echo \"exit code is : ${rc}\""
 
         if (rc != 0) 
@@ -24,6 +25,7 @@ pipeline {
         {
             sh "echo 'exit code is zero'"
         }
+                }
                // println ("\$?")
                 //
                 //bash -c  "echo \$?"
