@@ -1,0 +1,10 @@
+#vm01 ansible_host=127.0.0.1
+localhost   ansible_connection=local
+#db          ansible_host=172.28.0.1
+[webgroup]
+localhost
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_sudo_pass=1Q2w3E4rAs
+
