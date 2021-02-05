@@ -1,0 +1,19 @@
+---
+- name: First playbook!
+  hosts: all
+  become: true
+  user: root
+  #connection: docker
+  gather_facts: false
+  tasks:
+        - name: place prometheus config
+          template:
+               src: prometheus.yml.j2
+               dest: /home/user-admin/Ansible/data/prometheus/config/prometheus.yml
+
+        - name: Restart docker
+          service: 
+            name: docker
+            state: restarted
+            enabled: yes  
+      
