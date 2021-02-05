@@ -1,4 +1,4 @@
-import groovy.sql.Sql
+//import groovy.sql.Sql
 //import java.sql.Driver
 //import java.sql.Connection
 //import java.sql.DriverManager
@@ -7,6 +7,27 @@ import groovy.sql.Sql
 
 //
 pipeline {
+    def getSource() {
+    println("Pulling from branch: " + env.REPO)
+    println("Pulling from branch: " + env.TAG)
+    checkout([$class: 'GitSCM', branches: [[name: "${env.TAG}"]], userRemoteConfigs: [[url: "${env.REPO}"]]])
+}
+
+def runAnsible(message) {
+    println(message)
+   ansiColor('xterm') {
+        ansiblePlaybook(
+            colorized: true,
+			disableHostKeyChecking: true,
+            installation: 'ansible',
+            inventory: 'hosts',
+            credentialsId: env.CRED_ID,
+            playbook: "confog.yml",
+            extras: '')
+    }
+}
+
+
     agent any
     stages {
         stage('Stage 1') {
@@ -22,7 +43,25 @@ pipeline {
         }
         failure {
           echo 'Compile stage failed'
-            sh 'ls'
+            timestamps {
+	try {
+		stage("Getting source code") {
+			getSource()
+		}
+		stage("Parsing data") {
+			println("hello")
+            runAnsible("Run!")
+        }
+	} catch (Exception ex) {
+		println(ex)
+		currentBuild.result = 'FAILURE'
+	} finally {
+		cleanWs()
+	}
+}
+}
+
+          //  sh 'ls'
            // sh 'ansible-playbook -i hosts config.yml'
           //  sh 'docker logs postgreql'
           //error('Build is aborted due to failure of build stage')
