@@ -31,22 +31,24 @@ pipeline {
    
 
 	try {
-     def runAnsible(message) {
-     println(message)
-     ansiColor('xterm') {
-        ansiblePlaybook(
-            colorized: true,
-	    disableHostKeyChecking: true,
-            installation: 'ansible',
-            inventory: 'hosts',
-            //credentialsId: env.CRED_ID,
-            playbook: "config.yml",
-            extras: '')
+    // def runAnsible(message) {
+     //println(message)
+    // ansiColor('xterm') {
+       
     }
 }
 	stage("Parsing data") {
-		println("hello")
-            runAnsible("Run!")
+		steps{
+	          ansiblePlaybook(
+                      colorized: true,
+	              disableHostKeyChecking: true,
+                      installation: 'ansible',
+                      inventory: 'hosts',
+            //credentialsId: env.CRED_ID,
+                      playbook: "config.yml",
+                      extras: '')
+		 println("hello")
+            //runAnsible("Run!")
         }
 	} catch (Exception ex) {
 		println(ex)
