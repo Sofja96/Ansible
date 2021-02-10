@@ -24,33 +24,27 @@ pipeline {
         }
         failure {
           echo 'Compile stage failed'
-		    def getSource() {
-    println("Pulling from branch: " + env.REPO)
-    println("Pulling from branch: " + env.TAG)
-    checkout([$class: 'GitSCM', branches: [[name: "${env.TAG}"]], userRemoteConfigs: [[url: "${env.REPO}"]]])
-}
 
-def runAnsible(message) {
-    println(message)
-   ansiColor('xterm') {
+
+
+            timestamps {
+     def runAnsible(message) {
+     println(message)
+     ansiColor('xterm') {
         ansiblePlaybook(
             colorized: true,
 	    disableHostKeyChecking: true,
             installation: 'ansible',
             inventory: 'hosts',
-            credentialsId: env.CRED_ID,
+            //credentialsId: env.CRED_ID,
             playbook: "config.yml",
             extras: '')
     }
 }
 
-            timestamps {
 	try {
-		stage("Getting source code") {
-			getSource()
-		}
-		stage("Parsing data") {
-			println("hello")
+	stage("Parsing data") {
+		println("hello")
             runAnsible("Run!")
         }
 	} catch (Exception ex) {
