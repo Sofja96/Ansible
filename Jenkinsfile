@@ -58,7 +58,7 @@ pipeline {
 	}
 }
 }
-
+	}
           //  sh 'ls'
            // sh 'ansible-playbook -i hosts config.yml'
           //  sh 'docker logs postgreql'
