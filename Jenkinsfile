@@ -67,7 +67,7 @@ pipeline {
           //  sh 'docker logs postgreql'
           //error('Build is aborted due to failure of build stage')
 
-    /
+   // /
 //}
                // SCRIPT_PATH = 'docker ps' 
                 //sh " psql -h 172.28.0.1 -p 5432 -U postgres -c 'create user test3'"
