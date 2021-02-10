@@ -24,55 +24,49 @@ pipeline {
         }
         failure {
           echo 'Compile stage failed'
+          sh "ansible-playbook -i /home/user-admin/Ansible/hosts /home/user-admin/Ansible/config.yml -vD"
+	}
+      }
+	}
+    }
+		
 
-
-
-            timestamps {
+           // timestamps {
    
 
-	try {
+	//try {
     // def runAnsible(message) {
      //println(message)
     // ansiColor('xterm') {
        
     //}
 //}
-	stage("Parsing data") {
-		steps {
-	          ansiblePlaybook(
-                      colorized: true,
-	              disableHostKeyChecking: true,
-                      installation: 'ansible',
-                      inventory: 'hosts',
+	//stage("Parsing data") {
+		//steps {
+	         // ansiblePlaybook(
+                    //  colorized: true,
+	            //  disableHostKeyChecking: true,
+                    //  installation: 'ansible',
+                   //   inventory: 'hosts',
             //credentialsId: env.CRED_ID,
-                      playbook: "config.yml",
-                      extras: '')
-		 println("hello")
+                    //  playbook: "config.yml",
+                  //    extras: '')
+		// println("hello")
             //runAnsible("Run!")
-        }
-	} 
-	} catch (Exception ex) {
-		println(ex)
-		currentBuild.result = 'FAILURE'
-	} finally {
-		cleanWs()
-	}
-}
-}
-
-}
-}
-	}
-}
-          //  sh 'ls'
+      //  }
+	//} 
+	//} catch (Exception ex) {
+		//println(ex)
+		//currentBuild.result = 'FAILURE'
+	//} finally {
+	//	cleanWs()
+	//}
+         //  sh 'ls'
            // sh 'ansible-playbook -i hosts config.yml'
           //  sh 'docker logs postgreql'
           //error('Build is aborted due to failure of build stage')
 
-        }
-      }
-        }
-    }
+    /
 //}
                // SCRIPT_PATH = 'docker ps' 
                 //sh " psql -h 172.28.0.1 -p 5432 -U postgres -c 'create user test3'"
