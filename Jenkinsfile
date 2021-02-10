@@ -22,13 +22,13 @@ def runAnsible(message) {
             installation: 'ansible',
             inventory: 'hosts',
             credentialsId: env.CRED_ID,
-            playbook: "confog.yml",
+            playbook: "config.yml",
             extras: '')
     }
 }
 
 
-    agent any
+    agent { label 'slave' }
     stages {
         stage('Stage 1') {
             steps {
