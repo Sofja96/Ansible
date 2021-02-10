@@ -28,6 +28,9 @@ pipeline {
 
 
             timestamps {
+   
+
+	try {
      def runAnsible(message) {
      println(message)
      ansiColor('xterm') {
@@ -41,8 +44,6 @@ pipeline {
             extras: '')
     }
 }
-
-	try {
 	stage("Parsing data") {
 		println("hello")
             runAnsible("Run!")
