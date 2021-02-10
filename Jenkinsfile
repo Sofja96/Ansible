@@ -35,10 +35,10 @@ pipeline {
      //println(message)
     // ansiColor('xterm') {
        
-    }
-}
+    //}
+//}
 	stage("Parsing data") {
-		steps{
+		steps {
 	          ansiblePlaybook(
                       colorized: true,
 	              disableHostKeyChecking: true,
@@ -50,6 +50,7 @@ pipeline {
 		 println("hello")
             //runAnsible("Run!")
         }
+	} 
 	} catch (Exception ex) {
 		println(ex)
 		currentBuild.result = 'FAILURE'
@@ -58,7 +59,11 @@ pipeline {
 	}
 }
 }
+
+}
+}
 	}
+}
           //  sh 'ls'
            // sh 'ansible-playbook -i hosts config.yml'
           //  sh 'docker logs postgreql'
