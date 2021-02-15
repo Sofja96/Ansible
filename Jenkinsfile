@@ -26,9 +26,9 @@ pipeline {
           echo 'Compile stage failed'
 		script{
 			//def runAnsible(message) {
-    println(message)
-   ansiColor('xterm') {
-        ansiblePlaybook(
+    //println(message)
+           ansiColor('xterm') {
+             ansiblePlaybook(
             colorized: true,
 	    disableHostKeyChecking: true,
             //installation: 'ansible',
