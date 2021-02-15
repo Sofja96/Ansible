@@ -33,7 +33,7 @@ pipeline {
 	    disableHostKeyChecking: true,
             //installation: 'ansible',
             inventory: '/home/user-admin/Ansible/hosts',
-            //credentialsId: env.CRED_ID,
+            credentialsId: 'sample-ssh-key',
             playbook: "/home/user-admin/Ansible/config.yml",
             extras: '')
     }
