@@ -1,11 +1,4 @@
-//import groovy.sql.Sql
-//import java.sql.Driver
-//import java.sql.Connection
-//import java.sql.DriverManager
-//import java.sql.*
 
-
-//
 pipeline {
 
 
@@ -21,10 +14,7 @@ pipeline {
       post {
         success {
           echo 'Build stage successful'
-        }
-        failure {
-          echo 'Compile stage failed'
-		script{
+				script{
 			//def runAnsible(message) {
     //println(message)
            ansiColor('xterm') {
@@ -39,6 +29,10 @@ pipeline {
 	)
     }
 }
+        }
+        failure {
+          echo 'Compile stage failed'
+
 
          // sh "ansible-playbook -i /home/user-admin/Ansible/hosts /home/user-admin/Ansible/config.yml -vD"
 	}
