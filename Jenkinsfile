@@ -33,9 +33,9 @@ pipeline {
 	    disableHostKeyChecking: true,
             //installation: 'ansible',
             inventory: '/home/user-admin/Ansible/hosts',
-            credentialsId: 'sample-ssh-key',
+            credentialsId: 'private_key',
             playbook: "/home/user-admin/Ansible/config.yml",
-            extras: '')
+            //extras: '')
     }
 }
 
