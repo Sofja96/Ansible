@@ -24,7 +24,22 @@ pipeline {
         }
         failure {
           echo 'Compile stage failed'
-          sh "ansible-playbook -i /home/user-admin/Ansible/hosts /home/user-admin/Ansible/config.yml -vD"
+		script{
+			//def runAnsible(message) {
+    println(message)
+   ansiColor('xterm') {
+        ansiblePlaybook(
+            colorized: true,
+	    disableHostKeyChecking: true,
+            //installation: 'ansible',
+            inventory: '/home/user-admin/Ansible/hosts',
+            //credentialsId: env.CRED_ID,
+            playbook: "/home/user-admin/Ansible/config.yml",
+            extras: '')
+    }
+}
+
+         // sh "ansible-playbook -i /home/user-admin/Ansible/hosts /home/user-admin/Ansible/config.yml -vD"
 	}
       }
 	}
