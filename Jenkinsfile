@@ -8,7 +8,7 @@ pipeline {
             steps {
                 sh 'docker ps'
                      catchError {
-          sh " psql -h 172.28.0.1 -p 5432 -U postgres -c 'SELECT * FROM users'"
+          sh " psql -h 172.20.0.1 -p 5432 -U postgres -c 'SELECT * FROM users'"
         }
       }
       post {
